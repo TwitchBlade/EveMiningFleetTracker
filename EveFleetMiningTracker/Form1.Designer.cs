@@ -40,6 +40,7 @@
             this.error = new System.Windows.Forms.Label();
             this.clipboardExport = new System.Windows.Forms.Button();
             this.instructions = new System.Windows.Forms.Label();
+            this.createSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // minerInput
@@ -141,12 +142,23 @@
             this.instructions.TabIndex = 10;
             this.instructions.Text = resources.GetString("instructions.Text");
             // 
+            // createSave
+            // 
+            this.createSave.Location = new System.Drawing.Point(910, 9);
+            this.createSave.Name = "createSave";
+            this.createSave.Size = new System.Drawing.Size(75, 23);
+            this.createSave.TabIndex = 11;
+            this.createSave.Text = "Save";
+            this.createSave.UseVisualStyleBackColor = true;
+            this.createSave.Click += new System.EventHandler(this.createSave_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1075, 546);
+            this.Controls.Add(this.createSave);
             this.Controls.Add(this.instructions);
             this.Controls.Add(this.clipboardExport);
             this.Controls.Add(this.error);
@@ -178,6 +190,7 @@
         private System.Windows.Forms.Label error;
         private System.Windows.Forms.Button clipboardExport;
         private System.Windows.Forms.Label instructions;
+        private System.Windows.Forms.Button createSave;
     }
 }
 
