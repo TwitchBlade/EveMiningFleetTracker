@@ -24,7 +24,7 @@ namespace EveFleetMiningTracker
             string selectedMiner = (string)minerList.SelectedItem;
             foreach (KeyValuePair<string, Dictionary<string, string>> oreTotal in testTotals[selectedMiner])
             {
-                string oreString = string.Format("{0} x {1}", oreTotal.Key, testTotals[selectedMiner][oreTotal.Key]["quanity"]);
+                string oreString = string.Format("{0} x {1}", oreTotal.Key, testTotals[selectedMiner][oreTotal.Key]["quantity"]);
                 oreList.Items.Add(oreString);
             }
         }
@@ -48,10 +48,13 @@ namespace EveFleetMiningTracker
 
         private string updatePrice(string currentPrice, string addPrice)
         {
-            decimal currPrice = decimal.Parse(currentPrice.Replace(" ISK", ""));
-            decimal addPric = decimal.Parse(addPrice.Replace(" ISK", ""));
+            string commaRemove = currentPrice.Replace(",", "");
+            string commRemove = addPrice.Replace(",", "");
+            decimal currPrice = decimal.Parse(commaRemove.Replace(" ISK", ""));
+            decimal addPric = decimal.Parse(commRemove.Replace(" ISK", ""));
             decimal finalPrice = addPric + currPrice;
-            return finalPrice.ToString();
+            string finalPriceString = string.Format("{0:0,0.00}", finalPrice.ToString());
+            return finalPriceString + " ISK";
         }
 
         public Form1()
@@ -107,12 +110,13 @@ namespace EveFleetMiningTracker
                     }
                     else
                     {
-                        testTotals[selectedMiner][name][quantity] = updateQuanity(testTotals[selectedMiner][name][quantity], quantity);
-                        testTotals[selectedMiner][name][volume] = updateVolume(testTotals[selectedMiner][name][volume], volume);
-                        testTotals[selectedMiner][name][price] = updateQuanity(testTotals[selectedMiner][name][price], price);
+                        testTotals[selectedMiner][name]["quantity"] = updateQuanity(testTotals[selectedMiner][name]["quantity"], quantity);
+                        testTotals[selectedMiner][name]["volume"] = updateVolume(testTotals[selectedMiner][name]["volume"], volume);
+                        testTotals[selectedMiner][name]["price"] = updatePrice(testTotals[selectedMiner][name]["price"], price);
                     }
                 }
             }
+            //for the lols
             catch (Exception ex)
             {
                 error.Text = ex.Message;
