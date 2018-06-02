@@ -116,7 +116,7 @@ namespace EveFleetMiningTracker
                     }
                 }
             }
-            //is this working?
+            //yes is is
 
             catch (Exception ex)
             {
