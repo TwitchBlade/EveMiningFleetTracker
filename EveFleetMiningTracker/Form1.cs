@@ -116,7 +116,7 @@ namespace EveFleetMiningTracker
                     }
                 }
             }
-            //for the lols
+            
             catch (Exception ex)
             {
                 error.Text = ex.Message;
