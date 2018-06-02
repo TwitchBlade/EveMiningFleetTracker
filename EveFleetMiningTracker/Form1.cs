@@ -116,7 +116,8 @@ namespace EveFleetMiningTracker
                     }
                 }
             }
-            
+            //is this working?
+
             catch (Exception ex)
             {
                 error.Text = ex.Message;
